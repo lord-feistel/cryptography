@@ -25,9 +25,13 @@
 #ifndef __TESTS__
 #define __TESTS__
 
+#include "general.h"
+#include "crypto_math.h"
+
 void TESTE_EUCLIDES();
 void TESTE_EXTENDED_EUCLIDES();
 void TESTE_MODULAR_INVERSION();
+void TESTE_EULER_PHI();
 
 #endif
 

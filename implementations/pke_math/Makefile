@@ -1,8 +1,8 @@
 # Part of pkmath package
 # author Antonio AKA Lord Feistel
 
-OBJS	= euclidean.o pkmath.o tests.o
-SOURCE	= euclidean.cpp pkmath.cpp tests.cpp
+OBJS	= crypto_math.o pkmath.o tests.o
+SOURCE	= crypto_math.cpp pkmath.cpp tests.cpp
 HEADER	= 
 OUT		= pkmath
 CC	 	= g++
@@ -12,8 +12,8 @@ LFLAGS	=
 all: $(OBJS)
 	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
 
-euclidean.o: euclidean.cpp
-	$(CC) $(FLAGS) euclidean.cpp 
+euclidean.o: crypto_math.cpp
+	$(CC) $(FLAGS) crypto_math.cpp 
 
 teste.o: teste.cpp
 	$(CC) $(FLAGS) tests.cpp 

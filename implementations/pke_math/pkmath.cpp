@@ -23,7 +23,7 @@
 
 
 #include "general.h"
-#include "euclidean.h"
+#include "crypto_math.h"
 
 #include "tests.h"
 
@@ -37,8 +37,9 @@ int main()
     //TESTE_EUCLIDES();
     //TESTE_EXTENDED_EUCLIDES();
     //TESTE_MODULAR_INVERSION();
+    //TESTE_EULER_PHI();
 
-
+    cout << Phi(1234);
 
 
 

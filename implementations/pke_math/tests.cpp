@@ -1,5 +1,5 @@
 #include "general.h"
-#include "euclidean.h"
+#include "crypto_math.h"
 #include "tests.h"
 
 void TESTE_EUCLIDES()
@@ -38,6 +38,12 @@ void TESTE_MODULAR_INVERSION()
  
 }
 
+void TESTE_EULER_PHI()
+{
+    auto n =  Phi(5);
+    assert(n == 4);
+
+}
 
 
 

@@ -21,7 +21,7 @@
  */
 
 #include "general.h"
-#include "euclidean.h"
+#include "crypto_math.h"
 
 
 
@@ -272,4 +272,49 @@ tuple <bool , int_fast64_t>  module_inverse(int_fast64_t number, int_fast64_t mo
     cout << (t % mod + mod) % mod ;
     
     return make_tuple(isCoprime, t) ;
+}
+
+
+/**
+
+ @version   1.0
+ @author    Antonio (Lord Feistel)
+ @brief 
+            Euler phi (m) function is the number of relative primes of m
+            on the interval from 0 to m
+
+            Theorem:
+
+            Let m have the following canonical factorization
+            
+            m = P1^e1 *  Pn^en
+            
+            where the Pi are distinct prime numbers and e i are positive integers,
+            then
+
+            phi(m) = SUM (Pi^ei Pi^(ei -1)).
+
+            e.g.
+
+            example 1234 
+
+            factoring : 2 * 617     
+
+            phi(1234) = (2^1 - 2^0 ) * (617^1 - 617^0) = 1 * 616
+     
+ 
+ @param     m       number which will have the relative primes counted
+ @return            number of relative primes
+
+ **/
+
+int64_t Phi(int_fast64_t m)
+{
+    int n_co_primes = 0;
+
+    for(auto i = 0 ; i < m; i++)
+            if(gcd(i,m) == 1)
+                n_co_primes++;
+
+    return n_co_primes;
 }
