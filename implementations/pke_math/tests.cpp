@@ -1,5 +1,4 @@
-#include "general.h"
-#include "crypto_math.h"
+
 #include "tests.h"
 
 void TESTE_EUCLIDES()
@@ -45,6 +44,18 @@ void TESTE_EULER_PHI()
 
 }
 
+
+void TESTE_EULER_INVERTION()
+{
+    auto inverted = euler_inversion(2, 7);
+    
+    //checking inversion
+    assert( ( (2 * inverted) % 7 == 1) );
+
+}
+
+
+    
 
 
 

@@ -24,6 +24,9 @@
 #ifndef __EUCLIDEAN__
 #define __EUCLIDEAN__
 
+#include "general.h"
+#include <math.h>
+
 
 //extend euclidean algorithm
 int_fast64_t EEA(int_fast64_t a, int_fast64_t b, int_fast64_t & x, int_fast64_t &y);
@@ -35,7 +38,11 @@ uint_fast64_t gcd (uint_fast64_t A, uint_fast64_t B);
 //using extend euclidean algorithm
 tuple <bool , int_fast64_t>  module_inverse(int_fast64_t number, int_fast64_t mod);
 
+// euler phi function
 int64_t Phi(int_fast64_t m);
+
+// using Euler theorem ro perform a modualr inversion
+uint64_t euler_inversion(uint64_t a, uint64_t p);
 
 
 #endif

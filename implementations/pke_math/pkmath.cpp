@@ -38,10 +38,7 @@ int main()
     //TESTE_EXTENDED_EUCLIDES();
     //TESTE_MODULAR_INVERSION();
     //TESTE_EULER_PHI();
-
-    cout << Phi(1234);
-
-
+    //TESTE_EULER_INVERTION();
 
 
     return 0 ;

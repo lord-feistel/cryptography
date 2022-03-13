@@ -20,7 +20,7 @@
  * 
  */
 
-#include "general.h"
+
 #include "crypto_math.h"
 
 
@@ -317,4 +317,44 @@ int64_t Phi(int_fast64_t m)
                 n_co_primes++;
 
     return n_co_primes;
+}
+
+
+
+
+/**
+
+ @version   1.0
+ @author    Antonio (Lord Feistel)
+ @brief 
+           Another way to invert numbers
+
+            Euler little Theorem:
+
+            a^p = a mod p when p is prime and a is a integer 
+
+            a^p-1 = 1 mod p 
+
+            if 
+
+            a * a^p-2 = 1
+
+         
+     
+ 
+ @param     m       number which will have the relative primes counted
+ @return            number of relative primes
+
+ **/
+
+uint64_t euler_inversion(uint64_t a, uint64_t p)
+{
+
+    auto expoenent =  pow(a,(p-2))  ;
+
+    //pow return double
+    uint64_t result = static_cast<int> (expoenent);
+    
+    return ( result % p );
+
 }
