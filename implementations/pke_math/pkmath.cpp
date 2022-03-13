@@ -25,17 +25,23 @@
 #include "general.h"
 #include "euclidean.h"
 
+#include "tests.h"
+
 
 int main()
 {
 
-    s_int s = 0 ;
-    s_int t = 0 ;
 
-    cout << "The greatest common divisor between 973 and 301 : " << endl << gcd(973, 301) << endl ; 
 
-    EEA(973, 301, s, t);
-    cout << "The s and t for  973 and 301 : " << endl << s << " "<< t << endl ; 
+
+    //TESTE_EUCLIDES();
+    //TESTE_EXTENDED_EUCLIDES();
+    //TESTE_MODULAR_INVERSION();
+
+
+
+
+
 
     return 0 ;
 

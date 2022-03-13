@@ -1,8 +1,8 @@
 # Part of pkmath package
 # author Antonio AKA Lord Feistel
 
-OBJS	= euclidean.o pkmath.o
-SOURCE	= euclidean.cpp pkmath.cpp
+OBJS	= euclidean.o pkmath.o tests.o
+SOURCE	= euclidean.cpp pkmath.cpp tests.cpp
 HEADER	= 
 OUT		= pkmath
 CC	 	= g++
@@ -16,7 +16,7 @@ euclidean.o: euclidean.cpp
 	$(CC) $(FLAGS) euclidean.cpp 
 
 teste.o: teste.cpp
-	$(CC) $(FLAGS) teste.cpp 
+	$(CC) $(FLAGS) tests.cpp 
 
 
 clean:

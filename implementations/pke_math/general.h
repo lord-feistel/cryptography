@@ -25,13 +25,14 @@
 #define __GENERAL__
 
 #include <iostream>
+#include <tuple>
+#include <cassert>
 
 
 //avoiding writing too 
 //much at the variables type
 
-using _int = uint_fast64_t ;
-using s_int = int_fast64_t;
+
 using namespace std;
 
 #endif

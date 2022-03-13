@@ -82,7 +82,7 @@
 
 //show the steps in order to verify
 //#define SHOW_STEPS
-_int gcd (_int A, _int B)
+uint_fast64_t gcd (uint_fast64_t A, uint_fast64_t B)
 {
 
             // bear in mind that in the A mod B
@@ -175,10 +175,10 @@ _int gcd (_int A, _int B)
  @param     B  parameter on dio (A, B)
     
  @return    return s and t regarding the fact that a gcd result equation:
-            gcd(A, B) = As + t
+            gcd(A, B) = As + Bt
 */
 
-s_int EEA(s_int a, s_int b, s_int & x, s_int &y)
+int_fast64_t EEA(int_fast64_t a, int_fast64_t b, int_fast64_t & x, int_fast64_t &y)
 {
 
     // go till the last iteration
@@ -191,14 +191,85 @@ s_int EEA(s_int a, s_int b, s_int & x, s_int &y)
         return b;
     }
 
-    s_int X1 ; 
-    s_int Y1 ;
-    s_int d = EEA(b % a, a, X1, Y1);
+    int_fast64_t X1 ; 
+    int_fast64_t Y1 ;
+    int_fast64_t d = EEA(b % a, a, X1, Y1);
 
     // x = y - (b/a)x
     // y = x    
-    x = Y1 - ( (_int)(b / a) ) * X1;
+    x = Y1 - ( (int_fast64_t)(b / a) ) * X1;
     y = X1;
 
 return d;
+}
+
+
+
+/**
+
+ @version   1.0
+ @author    Antonio (Lord Feistel)
+ @brief 
+      
+      When two numbers are relative prime gcd(a, b) = 1
+      what is a condition for modular inversion operation
+      thus, from the linear combination previous analized
+
+      gcd(a ,b) = st + rt = 1
+
+      where t will be the modular inverse of such number.
+
+      e.g.
+
+      12 ^ 1 mod 67 using EEA we get 
+      
+      −5 · 67 + 28 · 12 = 1
+
+      then 12^-1 = 28 mod 67 because
+
+      12 * 28 = 336 = 1 mod 67
+
+      
+      recalling:
+
+      giving M mod Z   
+      
+      the modular inverse is a number which N which multiply
+      M such:
+
+      M * N = 1 mod Z
+
+ 
+ 
+ @param     m       modular parameter
+ @param     number  number which the inverse will be calculated
+    
+ @return    return if they are relative primes and the modular inverse in this case
+
+ NOTE: it also can be used on the calculations of AES involving Galois field on GF ( 2^8 )
+
+
+
+**/
+
+
+tuple <bool , int_fast64_t>  module_inverse(int_fast64_t number, int_fast64_t mod)
+{
+
+    int_fast64_t  s = 0 ;
+    int_fast64_t  t = 0 ;
+    bool isCoprime = true;
+
+    int_fast64_t gcd = EEA(number, mod,  t, s);
+
+
+
+    // they are not coprime
+    if(gcd != 1)
+        isCoprime =  false;
+
+    //handling negatives
+    cout << (t % mod + mod) % mod ;
+    
+    return make_tuple(isCoprime, t) ;
 }

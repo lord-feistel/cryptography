@@ -21,21 +21,13 @@
  */
 
 
-#ifndef __EUCLIDEAN__
-#define __EUCLIDEAN__
 
+#ifndef __TESTS__
+#define __TESTS__
 
-//extend euclidean algorithm
-int_fast64_t EEA(int_fast64_t a, int_fast64_t b, int_fast64_t & x, int_fast64_t &y);
-
-//gcd using euclidean algorithm
-uint_fast64_t gcd (uint_fast64_t A, uint_fast64_t B);
-
-
-//it calculates the modular inverse of a number if exist
-//using extend euclidean algorithm
-tuple <bool , int_fast64_t>  module_inverse(int_fast64_t number, int_fast64_t mod);
-
-
+void TESTE_EUCLIDES();
+void TESTE_EXTENDED_EUCLIDES();
+void TESTE_MODULAR_INVERSION();
 
 #endif
+
