@@ -44,5 +44,8 @@ int64_t Phi(int_fast64_t m);
 // using Euler theorem ro perform a modualr inversion
 uint64_t euler_inversion(uint64_t a, uint64_t p);
 
+// simple demonstration how works diffie hellman
+ _param_dh Diffie_Hellman();
+
 
 #endif

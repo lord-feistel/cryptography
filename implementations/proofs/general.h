@@ -27,10 +27,13 @@
 #include <iostream>
 #include <tuple>
 #include <cassert>
+#include <tuple>
 
 
 //avoiding writing too 
 //much at the variables type
+
+using _param_dh = std::tuple <  u_int64_t, u_int64_t   >; 
 
 
 using namespace std;

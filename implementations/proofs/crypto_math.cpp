@@ -358,3 +358,77 @@ uint64_t euler_inversion(uint64_t a, uint64_t p)
     return ( result % p );
 
 }
+
+
+/**
+
+ @version   1.0
+ @author    Antonio (Lord Feistel)
+ @brief 
+            Diffie-hellman key exchange
+
+            calculate a common key for Bob and Alice 
+            key choices
+
+            As it's only a proof of concept the numbers will be 
+            restricted to 64 bits. For a real DH, routine check
+            other folders 
+
+
+            Works like :
+
+            Parameters : p and g
+            Alice chooses d 
+            Bob  chooses  e 
+
+            Alices does g ^ d mod p
+            and sends to bob
+            
+            Bob does g ^ e mod p      
+            and sends to Alice
+
+
+            After receive:
+
+            Bob   = key_received ^ e mod p
+            Alice = key_received ^ d mod p
+
+            As (F ^a ) ^b = (F ^b ) ^a
+
+            Both of them will share the same key
+
+ 
+       
+ @return    key_bob     - generator power Bob's integer  choice 
+            key_alice   - generator powerAlice's integer  choice       
+
+ **/
+
+
+
+ _param_dh Diffie_Hellman()
+{
+    
+
+    u_int64_t p = 11;
+    u_int64_t g = 3;
+
+    u_int64_t alice_choice = 3;
+    u_int64_t bob_choice = 2;
+ 
+    u_int64_t key_alice = ( (u_int64_t) pow(g,alice_choice) ) % p;
+    u_int64_t key_bob = ( (u_int64_t) pow(g,bob_choice) ) % p;
+
+
+    u_int64_t alice_calc_key = ( (u_int64_t) pow(key_bob,alice_choice) ) % p ;
+    u_int64_t bob_calc_key =   ( (u_int64_t) pow(key_alice,bob_choice) ) % p ;
+
+ 
+    return make_tuple(bob_calc_key, alice_calc_key);
+
+}
+
+
+
+
+

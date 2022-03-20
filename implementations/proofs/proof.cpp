@@ -34,11 +34,13 @@ int main()
 
 
 
-    //TESTE_EUCLIDES();
-    //TESTE_EXTENDED_EUCLIDES();
-    //TESTE_MODULAR_INVERSION();
-    //TESTE_EULER_PHI();
-    TESTE_EULER_INVERTION();
+    // TESTE_EUCLIDES();
+    // TESTE_EXTENDED_EUCLIDES();
+    // TESTE_MODULAR_INVERSION();
+    // TESTE_EULER_PHI();
+    // TESTE_EULER_INVERTION();
+
+    Diffie_Hellman();
 
 
     return 0 ;
