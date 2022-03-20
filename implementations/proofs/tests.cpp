@@ -58,13 +58,26 @@ void TESTE_EULER_INVERTION()
 
 void TESTE_DIFFIE_HELLMAN()
 {
-    auto inverted = Diffie_Hellman();
+    auto inverted = Diffie_Hellman(11,3,3,2);
     //check if both keys calculates for bob and Alice respectively 
     // has the same value, what is the purpose of Diffie Hellman
     // key exchange
     assert( get< 0 >(inverted) ==  get< 1 >(inverted));
 
 }
+
+
+
+void TESTE_ELGAMAL()
+{
+    
+    uint64_t Message = 40;
+    tuple_int_int result = elgamal(Message);
+    
+    assert( Message ==  get< 1 >(result));
+
+}
+
 
 
 

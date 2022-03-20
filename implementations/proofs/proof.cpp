@@ -39,8 +39,10 @@ int main()
     // TESTE_MODULAR_INVERSION();
     // TESTE_EULER_PHI();
     // TESTE_EULER_INVERTION();
+    // TESTE_DIFFIE_HELLMAN();
+    // TESTE_ELGAMAL();
 
-    Diffie_Hellman();
+
 
 
     return 0 ;

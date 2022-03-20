@@ -33,7 +33,8 @@
 //avoiding writing too 
 //much at the variables type
 
-using _param_dh = std::tuple <  u_int64_t, u_int64_t   >; 
+using tuple_int_int = std::tuple <  u_int64_t, u_int64_t   >; 
+using result_inv = std::tuple <bool , int_fast64_t> ; 
 
 
 using namespace std;

@@ -45,7 +45,12 @@ int64_t Phi(int_fast64_t m);
 uint64_t euler_inversion(uint64_t a, uint64_t p);
 
 // simple demonstration how works diffie hellman
- _param_dh Diffie_Hellman();
+// a class diffie hellman could be created to be ore elegant.
+tuple_int_int Diffie_Hellman(u_int64_t p, u_int64_t g,uint64_t alice_choice,  uint64_t bob_choice);
+
+//perform a simple demonstration of elgamal
+// return the result of encryption and decryption
+tuple_int_int elgamal(uint64_t M);
 
 
 #endif

@@ -269,7 +269,7 @@ tuple <bool , int_fast64_t>  module_inverse(int_fast64_t number, int_fast64_t mo
         isCoprime =  false;
 
     //handling negatives
-    cout << (t % mod + mod) % mod ;
+    //cout << (t % mod + mod) % mod ;
     
     return make_tuple(isCoprime, t) ;
 }
@@ -319,9 +319,6 @@ int64_t Phi(int_fast64_t m)
     return n_co_primes;
 }
 
-
-
-
 /**
 
  @version   1.0
@@ -342,8 +339,9 @@ int64_t Phi(int_fast64_t m)
          
      
  
- @param     m       number which will have the relative primes counted
- @return            number of relative primes
+ @param     a      base
+ @param     p      exponent
+ @return           number of relative primes
 
  **/
 
@@ -397,24 +395,24 @@ uint64_t euler_inversion(uint64_t a, uint64_t p)
 
             Both of them will share the same key
 
+            The Diffie Hellman uses the DLP the difficult to solve the discrete logarithm problem
+            which states that the hardness of discover log A on the base P
  
-       
+
+ @param     p               - the prime number used on the mod operation
+ @param     g               -  the generator AKA base of exponential operation
+ @param     alice_choice    - integer chose by alice
+ @param     bob_choice      - integer chose by bob
+
+
  @return    key_bob     - generator power Bob's integer  choice 
             key_alice   - generator powerAlice's integer  choice       
 
  **/
 
-
-
- _param_dh Diffie_Hellman()
+ tuple_int_int Diffie_Hellman(u_int64_t p, u_int64_t g,uint64_t alice_choice,  uint64_t bob_choice)
 {
     
-
-    u_int64_t p = 11;
-    u_int64_t g = 3;
-
-    u_int64_t alice_choice = 3;
-    u_int64_t bob_choice = 2;
  
     u_int64_t key_alice = ( (u_int64_t) pow(g,alice_choice) ) % p;
     u_int64_t key_bob = ( (u_int64_t) pow(g,bob_choice) ) % p;
@@ -428,6 +426,97 @@ uint64_t euler_inversion(uint64_t a, uint64_t p)
 
 }
 
+
+
+/**
+
+ @version   1.0
+ @author    Antonio (Lord Feistel)
+ @brief 
+            Elgamal
+
+            Elgamal uses Diffie Hellman to implement a Public Key system.
+            Bear in mind that the Diffie hellman is a key exchange system, not a public
+            key encryption system once both Bob and Alice share the same key.
+      
+            Following how it works supposing Alice wants to encrypt the message M
+            and send to Bob.
+
+            i ) Bob choose p and g as in Diffie-Hellman and also a d which will be used to decrypt the message
+            and calculate:
+
+            B = g^d mod p and send to Alice
+
+            ii) Alice chooses an integer i and calculates 
+
+            1 - The ephemeral key KE
+            KE = g^i mod p
+
+            2 - The Mask Key KM
+            KM = B^i mod p 
+            Note: B was received by bob
+
+            3 - Encrypt the message
+            C = M * KM
+
+            4 - Send KE and  C to Bob
+
+            iii ) message decrypt
+
+            1 - Bob discover the KM
+            KM = KE ^ d
+
+            2 - Decrypting message
+            M = ( KM^1 ) * C mod p        
+
+ @param     M - The prime number used on the mod operation
+
+ @return    tuple_int_int - tuple returing the encrypted and decrypted messages    
+
+ **/
+tuple_int_int elgamal(uint64_t M)
+{
+
+    //Bob chooses d and generates B
+    u_int64_t g = 2;
+    u_int64_t d = 11;
+    u_int64_t p = 29;
+
+    //and calculates B
+    u_int64_t B = ( (u_int64_t) pow(g,d) ) % p;
+
+    // send (g,p,B) to Alice
+
+    // Alice chooses i
+    u_int64_t i = 5;
+    // Alice calculates KE
+    // IMPORTANT KE is used only one time
+    // All message a new i need to be chosen   
+    u_int64_t KE = ( (u_int64_t) pow(g,i) ) % p;
+
+    //Alice calculates KM
+    u_int64_t KM = ( (u_int64_t) pow(B,i) ) % p;
+
+    //ENCRYPTION
+    uint64_t C = (KM * M ) % p;
+
+    //sends (KE, C)
+
+    //DECRYPTION
+
+    //bobs calculates  KM
+
+    uint64_t KM_calculated = ( (u_int64_t) pow(KE,d) ) % p;
+
+    // bobs calculate KM^-1 gcd
+
+    result_inv KM_inverted = module_inverse(KM_calculated, p);
+
+    uint64_t DM = (C * get<1> (KM_inverted))  ;//% p; 
+ 
+    return make_tuple(C, DM);
+
+}
 
 
 
