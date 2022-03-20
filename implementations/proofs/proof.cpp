@@ -38,7 +38,7 @@ int main()
     //TESTE_EXTENDED_EUCLIDES();
     //TESTE_MODULAR_INVERSION();
     //TESTE_EULER_PHI();
-    //TESTE_EULER_INVERTION();
+    TESTE_EULER_INVERTION();
 
 
     return 0 ;

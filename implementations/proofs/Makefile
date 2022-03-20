@@ -1,10 +1,10 @@
 # Part of pkmath package
 # author Antonio AKA Lord Feistel
 
-OBJS	= crypto_math.o pkmath.o tests.o
-SOURCE	= crypto_math.cpp pkmath.cpp tests.cpp
+OBJS	= crypto_math.o proof.o tests.o
+SOURCE	= crypto_math.cpp proof.cpp tests.cpp
 HEADER	= 
-OUT		= pkmath
+OUT		= proof
 CC	 	= g++
 FLAGS	= -g -c -Wall -std=c++17
 LFLAGS	= 
