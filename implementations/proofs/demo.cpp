@@ -41,7 +41,7 @@ int main()
     // TESTE_EULER_INVERTION();
     // TESTE_DIFFIE_HELLMAN();
     // TESTE_ELGAMAL();
-
+    TESTE_RSA();
 
 
 

@@ -35,6 +35,7 @@ void TESTE_EULER_PHI();
 void TESTE_EULER_INVERTION();
 void TESTE_DIFFIE_HELLMAN();
 void TESTE_ELGAMAL();
+void TESTE_RSA();
 
 #endif
 

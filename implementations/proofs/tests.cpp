@@ -79,6 +79,15 @@ void TESTE_ELGAMAL()
 }
 
 
+void TESTE_RSA()
+{
+    uint64_t message = 5;
+    tuple_int_int result = RSA(message);
+    assert( get<0> (result) == message); 
+}
+
+
+
 
 
 

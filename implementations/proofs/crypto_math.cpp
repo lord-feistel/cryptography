@@ -269,7 +269,8 @@ tuple <bool , int_fast64_t>  module_inverse(int_fast64_t number, int_fast64_t mo
         isCoprime =  false;
 
     //handling negatives
-    //cout << (t % mod + mod) % mod ;
+    if(t < 0)
+        t =  (t % mod + mod) % mod ;
     
     return make_tuple(isCoprime, t) ;
 }
@@ -518,6 +519,72 @@ tuple_int_int elgamal(uint64_t M)
 
 }
 
+/**
+
+ @version   1.0
+ @author    Antonio (Lord Feistel)
+ @brief 
+            RSA
+
+            Bob
+
+            1-  Choose p and q
+            2 - n = p*q
+            3 - phi(n) = (p - 1) * (q - 1)
+            4 - choose e = 3
+            5 - d = e^-1 = d mod phi(n)
+
+            where d is provate key and e and n are the public key
+
+            Alice
+
+            1 - encrypted message = message ^  e mod n
 
 
+ @param     M - The message do be encrypted and  decrypted
 
+ @return    tuple_int_int - tuple returing the encrypted 
+            and decrypted messages    
+
+NOTE : Read theory before and be aware of the limitations of parameters.
+
+**/
+
+tuple_int_int RSA( uint64_t M)
+{
+
+    //bob chooses p and q
+    uint64_t p = 3;
+    uint64_t q = 11;
+
+    //get n
+    u_int64_t n = p * q;
+    
+    // phi( n ) = q-1 * p -1
+    u_int64_t phy = ( (q -1) * (p -1));
+
+    //choose some e on this case 3
+    u_int64_t e = 3;
+
+    //lets calculate the inverse of e what will be our
+    // private key
+
+    result_inv private_key =  module_inverse(e, phy);
+
+    u_int64_t d =  get<1>(private_key);
+
+     //send to alice ( e , n)
+
+    //alice enmcrypt with e 
+    // M^e mod n
+    
+    u_int64_t y = ( (u_int64_t) pow(M,e) ) % n;
+
+    //send to bob cipher message CM to bob
+    
+    //Bob decrypt
+     u_int64_t DM = ( (u_int64_t) pow(y,d) ) % n;
+    
+    return std::make_tuple(DM,d);
+
+}

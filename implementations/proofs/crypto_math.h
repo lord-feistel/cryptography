@@ -52,5 +52,8 @@ tuple_int_int Diffie_Hellman(u_int64_t p, u_int64_t g,uint64_t alice_choice,  ui
 // return the result of encryption and decryption
 tuple_int_int elgamal(uint64_t M);
 
+//perform RSA with small numbers
+tuple_int_int RSA( uint64_t M);
+
 
 #endif
