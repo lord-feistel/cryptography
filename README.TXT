@@ -23,19 +23,22 @@ Created in order to understand and apply cryptography
 
 crypto_notations:
 
-- Fields_and_aes - notes from "undestanding cryptography" also perform 1 round of AES.
+i )  Fields_and_aes - notes from "undestanding cryptography" also perform 1 round of AES.
 
-- hash_func      - notes regarding hash function from "undestanding cryptography"
+ii)  hash_func      - notes regarding hash function from "undestanding cryptography"
 
-- PKE            - notes related with Public Key Encryption
+iii) PKE            - notes related with Public Key Encryption
 
 implementation:
 
-- A implementation of some algorithms
+i)   proof         : A implementation of some algorithms with  small number just to see it happens, not suitable for real case
+ii)  imlementation : real implementations with educational purpouses. 
 
-python_Teste:
+python_Teste: 
 
-- Scripts to perform some crypto operation
+i)   Scripts to perform some crypto operation using a python library for that
+
+
 
 
 
